@@ -10,11 +10,11 @@ There are 3 containers defined:
 ## Container Usage
 * `mysql-dev`: Just start the container and use it like a regular mysql server instance exposed through a specific port. (MySQL Workbench, PowerShell, Terminal, ...)
 * `client`: To use this container, the `mysql-dev` container has to be up and running. Since this precondition is fulfilled just use this command to access the database through the `client` container: `docker-compose run --rm client`
-* `adminer`: Inside a docker-compose network, all running containers, that expose a service through a given port, will have their own domain name. Thats why the database of the `mysql-dev` container will be available through the servername `mysql-dev` and the defined environment variables. This service will be exposed on a specific port on localhost and can be accessed via [localhost:<PORT>](localhost)
+* `adminer`: Inside a docker-compose network, all running containers, that expose a service through a given port, will have their own domain name. Thats why the database of the `mysql-dev` container will be available through the servername `mysql-dev` and the defined environment variables. This service will be exposed on a specific port on localhost and can be accessed via [localhost:PORT](localhost)
 
 # docker-compose
 ## Basic Stuff
-* Port syntax: <Host Port>:<Container Port>
+* Port syntax: `<Host Port>:<Container Port>`
 
 ## CLI Cheat Sheet
 * start containers: `docker-compose up`
