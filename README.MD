@@ -1,4 +1,4 @@
-# Prequisits
+# Prerequisites
 1. Install `docker`
 2. Install `docker-compose`
 3. **TL;DR**: Start containers with `docker-compose up` or `docker-compose up -d` (More details: CLI Cheat Sheet)
