@@ -1,6 +1,9 @@
-# Some basic stuff for THIS docker-compose
-**TL;DR**: Start containers `docker-compose up` or `docker-compose up -d` (More details: CLI Cheat Sheet)
+# Prequisits
+1. Install `docker`
+2. Install `docker-compose`
+3. **TL;DR**: Start containers with `docker-compose up` or `docker-compose up -d` (More details: CLI Cheat Sheet)
 
+# Some basic stuff for THIS docker-compose
 ## Container Composition
 There are 3 containers defined:
 * `mysql-dev`: This container starts a mysql instance on a specific host port. The root password, user, user password and database are defined in the `environment` section. The `/var/lib/mysql` folder of the container is mapped to the `data` folder on the host. The `my.cnf` file on the host will be placed in the container after startup.
