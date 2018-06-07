@@ -2,7 +2,7 @@ version: '3'
 
 services: 
   mysql-dev:
-    image: mariadb
+    image: mysql:5
     environment: 
       MYSQL_ROOT_PASSWORD: password
       MYSQL_USER: mgse_user
@@ -15,7 +15,7 @@ services:
       - "./data:/var/lib/mysql:rw"
   
   client:
-    image: mariadb
+    image: mysql:5
     depends_on:
       - mysql-dev
     command: mysql -umgse_user -pageofempires3 -hmysql-dev mgse_user_db
