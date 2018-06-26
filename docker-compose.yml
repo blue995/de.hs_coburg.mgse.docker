@@ -24,3 +24,35 @@ services:
     image: adminer
     ports: 
       - 8081:8080
+  
+  restapi-maven-build:
+    container_name: restapi-maven-build
+    build:
+      context: ../application/restapi
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql-dev
+    volumes: 
+      - "./restapi/artifacts:/opt/app/target:rw"
+
+  restapi-tomcat:
+    image: tomcat:8
+    restart: always
+    depends_on: 
+      - restapi-maven-build
+    volumes: 
+      - "./restapi/artifacts/rest-api.war:/usr/local/tomcat/webapps/rest-api.war"
+    ports:
+      - 8082:8080
+
+  frontend-angular:
+    container_name: frontend-angular
+    build:
+      context: ../application/frontend
+      dockerfile: Dockerfile
+    depends_on: 
+      - restapi-tomcat
+    volumes:
+      - '/usr/src/app/node_modules'
+    ports:
+      - '8083:4200'
