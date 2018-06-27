@@ -1,19 +1,20 @@
 version: '3'
 
-services: 
+services:
   mysql-dev:
     image: mysql:5
-    environment: 
+    restart: always
+    environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_USER: mgse_user
       MYSQL_PASSWORD: ageofempires3
       MYSQL_DATABASE: mgse_user_db
-    ports: 
+    ports:
       - "3308:3306"
     volumes:
       - "./my.cnf:/etc/mysql/conf.d/config-file.cnf"
       - "./data:/var/lib/mysql:rw"
-  
+
   client:
     image: mysql:5
     depends_on:
@@ -22,11 +23,12 @@ services:
 
   admin:
     image: adminer
-    ports: 
+    ports:
       - 8081:8080
-  
+
   restapi:
     container_name: restapi
+    restart: always
     build:
       context: ../application/restapi
       dockerfile: Dockerfile
@@ -40,7 +42,7 @@ services:
     build:
       context: ../application/frontend
       dockerfile: Dockerfile
-    depends_on: 
+    depends_on:
       - restapi
     volumes:
       - '/usr/src/app/node_modules'
