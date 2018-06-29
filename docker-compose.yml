@@ -45,7 +45,6 @@ services:
   frontend:
     build: ../application/frontend
     restart: always
-    environment:
     depends_on:
       - restapi
     links:
